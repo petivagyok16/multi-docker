@@ -22,3 +22,16 @@ after_success:
   - docker push petivagyok16/multi-server
   - docker push petivagyok16/multi-worker
 
+deploy:
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: multi-docker
+  env: Multidocker-env
+  bucket_name: elasticbeanstalk-eu-central-1-105457832875
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    securet: $AWS_SECRET_KEY
+
